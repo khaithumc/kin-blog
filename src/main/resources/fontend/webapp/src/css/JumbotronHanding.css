@@ -1,0 +1,56 @@
+.jumbotron {
+    height: 700px;
+    background-image: url("https://www.homegrounds.co/wp-content/uploads/2019/10/banner1-1.png");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    border-bottom: 190px solid #fff;
+
+}
+
+.contentJum {
+    text-align: right;
+    padding-right: 150px;
+    padding-top: 100px;
+}
+
+.contentJum h1 {
+    color: #273338;
+    font-family: rubik, sans-serif;
+    font-size: 63px;
+}
+
+.contentJum p {
+    font-size: 18px;
+    font-family: Karla, sans-serif;
+}
+
+.contentJum .jumButton {
+    background: none;
+    color: rgb(28, 27, 27);
+    margin-top: 10px;
+    padding-top: 8px;
+    width: 220px;
+    height: 47px;
+    font-size: 18px;
+    border: black solid 1px;
+}
+
+.contentJum .jumButton:hover {
+    background: rgb(28, 27, 27);
+    color: #fff;
+    border: rgb(28, 27, 27) solid 1px;
+}
+
+@media screen and (max-width: 960px) {
+    .contentJum {
+        text-align: right;
+        padding-right: 150px;
+        padding-top: 0px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .contentJum {
+        display: none;
+    }
+ }

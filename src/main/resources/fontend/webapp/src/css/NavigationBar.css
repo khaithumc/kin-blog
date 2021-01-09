@@ -1,0 +1,113 @@
+.navbar-handing {
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.navbar-logo-handing {
+    color: #fff;
+    justify-self: start;
+    margin-left: 20px ;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    padding-top: 20px;
+}
+
+.navbar-logo-handing:hover {
+    text-decoration-line: none;
+    color: #ffffff;
+}
+
+.nav-menu{
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    width: 70%;
+    justify-content: end;
+    margin-right: 2rem;
+}
+
+.nav-item-handing {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    font-size: 20px;
+}
+
+.nav-links-handing {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links-handing:hover {
+    color: #1888ff;
+    text-decoration-line: none;
+    transition: all 0.2s ease-out;
+}
+
+.fa-bars {
+    color: #fff;
+}
+
+.menu-icon-handing {
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .nav-menu.active{
+        background: #242222;
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+
+    .nav-links-handing {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    nav-links-handing:hover {
+        color: #1888ff;
+        text-decoration-line: none;
+    }
+
+    .menu-icon-handing {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .fa-times {
+        color: #fff;
+        font-size: 2rem;
+    }
+
+}
+
+
+
