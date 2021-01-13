@@ -5,5 +5,7 @@ import khaithumc.com.kinblog.model.Post;
 import java.util.List;
 
 public interface PostService {
-    public List<Post> getAll();
+    List<Post> getAll();
+
+    Post addPost(Post post);
 }

@@ -2,29 +2,46 @@ import React, {Component} from 'react';
 import '../css/AddPost.css'
 import {Button, Form} from "react-bootstrap";
 import {Editor} from "@tinymce/tinymce-react";
+import axios from "axios";
 
 
 class AddPost extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            title:"",
-            thumbnail:"",
-            shortDes:"",
-            content:"",
-            category:"",
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.submitPost = this.submitPost.bind(this);
+        this.state = this.initialState;
     }
 
-    submitPost(event)  {
-        alert(this.state.title);
+    initialState = {title:"", thumbnail:"", shortDes:"", content:""}
+
+    resetPost= () => {
+        this.setState(()=> this.initialState);
+    }
+
+    submitPost = event => {
         event.preventDefault();
+
+        const post = {
+            title: this.state.title,
+            thumbnail: this.state.thumbnail,
+            shortDes: this.state.shortDes,
+            content: this.state.content,
+        };
+
+        console.log("title: " + post.title + ",thumbnail: " + post.thumbnail + ",shortDes: " + post.shortDes + ",content: " + post.content);
+
+        axios.post("http://localhost:8085/post", {
+            title: this.state.title,
+            thumbnail: this.state.thumbnail,
+            shortDes: this.state.shortDes,
+            content: this.state.content,
+        })
+            .then(res => {
+                console.log(res.data);
+                });
     }
 
-    handleChange(event) {
+    handleChange = event => {
         this.setState({
             [event.target.name]:event.target.value
         })
@@ -36,7 +53,7 @@ class AddPost extends Component {
 
     render() {
         return (
-            <Form onSubmit={this.submitPost}>
+            <Form onSubmit={this.submitPost} onReset={this.resetPost}>
                 <Form.Group>
                     <Form.Label>Title</Form.Label>
                     <Form.Control required
@@ -47,12 +64,6 @@ class AddPost extends Component {
                     <Form.Label>Thumbnail link</Form.Label>
                     <Form.Control required
                                   type={'text'} name={'thumbnail'} value={this.state.thumbnail} onChange={this.handleChange}/>
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Label>Category</Form.Label>
-                    <Form.Control required
-                                  type={'text'} name={'category'} value={this.state.category} onChange={this.handleChange}/>
                 </Form.Group>
 
                 <Form.Group>
@@ -86,6 +97,9 @@ class AddPost extends Component {
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
+                </Button>
+                <Button variant="primary" type="reset">
+                    Reset
                 </Button>
             </Form>
         );

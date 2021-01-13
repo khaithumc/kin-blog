@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,5 +21,10 @@ public class PostServiceImpl implements PostService {
     public List<Post> getAll() {
        List<Post> posts =  postRepos.findAll();
        return  posts;
+    }
+
+    @Override
+    public Post addPost(Post post) {
+        return postRepos.save(post);
     }
 }

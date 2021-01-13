@@ -39,7 +39,7 @@ public class Post {
     @Column(name = "link_product")
     private String linkProduct;
 
-    @Column(name = "id_category")
+   /* @Column(name = "id_category")
    private long idCategory;
 
     /*@ManyToOne
