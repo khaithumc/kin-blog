@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function Products() {
-    return(
-        <h1>PRODUCTS</h1>
-    );
+class Products extends Component{
+    render() {
+        return(
+            <h1>PRODUCTS</h1>
+        )
+    };
 }
 export default Products;

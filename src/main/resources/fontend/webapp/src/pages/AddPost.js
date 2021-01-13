@@ -10,8 +10,10 @@ class AddPost extends Component {
         super(props);
         this.state = {
             title:"",
-            shortDescription:"",
+            thumbnail:"",
+            shortDes:"",
             content:"",
+            category:"",
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitPost = this.submitPost.bind(this);
@@ -42,9 +44,21 @@ class AddPost extends Component {
                 </Form.Group>
 
                 <Form.Group>
+                    <Form.Label>Thumbnail link</Form.Label>
+                    <Form.Control required
+                                  type={'text'} name={'thumbnail'} value={this.state.thumbnail} onChange={this.handleChange}/>
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>Category</Form.Label>
+                    <Form.Control required
+                                  type={'text'} name={'category'} value={this.state.category} onChange={this.handleChange}/>
+                </Form.Group>
+
+                <Form.Group>
                     <Form.Label>Short Description</Form.Label>
                     <Form.Control required
-                        type={'text'} name={'shortDescription'} value={this.state.shortDescription} onChange={this.handleChange}/>
+                        type={'text'} name={'shortDes'} value={this.state.shortDes} onChange={this.handleChange}/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Content</Form.Label>

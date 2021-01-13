@@ -39,15 +39,15 @@ function NavigationBar() {
 
     return (
         <nav className={'navbar-handing'}>
-            <a href='/home' className='navbar-logo-handing' onClick={closeMobileMenu}>
+            <a href='/' className='navbar-logo-handing' onClick={closeMobileMenu}>
                 <h1>Fake <i className="fas fa-grin-squint-tears"></i> News </h1>
             </a>
             <div className={'menu-icon-handing'} onClick={handleClick}>
-                <i className={click ? 'fab fa-times' : 'fas fa-bars'} />
+                <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className='nav-item-handing'>
-                    <a href={'/home'} className={'nav-links-handing'} onClick={closeMobileMenu}>
+                    <a href={'/'} className={'nav-links-handing'} onClick={closeMobileMenu}>
                         Home
                     </a>
                 </li>

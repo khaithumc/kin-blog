@@ -5,28 +5,46 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
+@Entity
+@Table(name = "post")
 public class Post {
-    private long idPost;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_post")
+    private long id;
 
+    @Column
     private String title;
 
+    @Column
     private String thumbnail;
 
-    private String shortDesciption;
+    @Column(name = "short_description")
+    private String shortDes;
 
+    @Column
     private String content;
 
-    private Date createdAt;
+    @Column(name = "created_at")
+    private LocalDate createdAt;
 
-    private Date updatedAt;
+    @Column(name = "updated_at")
+    private LocalDate updatedAt;
 
+    @Column(name = "link_product")
     private String linkProduct;
 
+    @Column(name = "id_category")
+   private long idCategory;
+
+    /*@ManyToOne
+    @JoinColumn(name = "id_category")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private Category category;
+    private Category category;*/
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import JumbotronHanding from "../components/body/JumbotronHanding";
 import GridPost from "../components/body/GridPost";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 
 function Home() {
     return(
