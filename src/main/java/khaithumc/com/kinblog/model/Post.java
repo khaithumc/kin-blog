@@ -36,8 +36,8 @@ public class Post {
     @Column(name = "updated_at")
     private LocalDate updatedAt;
 
-    @Column(name = "link_product")
-    private String linkProduct;
+    @Column(name = "url_detail")
+    private String urlDetail;
 
    /* @Column(name = "id_category")
    private long idCategory;

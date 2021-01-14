@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -19,12 +19,16 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getAll() {
-       List<Post> posts =  postRepos.findAll();
-       return  posts;
+       return  postRepos.findAll();
     }
 
     @Override
     public Post addPost(Post post) {
         return postRepos.save(post);
+    }
+
+    @Override
+    public Optional<Post> getPostById(Long id) {
+        return postRepos.findById(id);
     }
 }

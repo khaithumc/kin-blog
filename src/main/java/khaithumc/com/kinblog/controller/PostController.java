@@ -22,12 +22,10 @@ public class PostController {
     @Autowired
     private PostServiceImpl postService;
 
-    private List<Post> posts = new ArrayList<>();
 
     @GetMapping
     public ResponseEntity<List<Post>> getAllPost() {
-        posts = postService.getAll();
-        return new ResponseEntity<>(posts, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(postService.getAll(), new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping
@@ -35,4 +33,10 @@ public class PostController {
         post.setCreatedAt(LocalDate.now());
         return new ResponseEntity<>(postService.addPost(post), new HttpHeaders(), HttpStatus.CREATED);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Post> getPostById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(postService.getPostById(id).get(), new HttpHeaders(), HttpStatus.OK);
+    }
+
 }

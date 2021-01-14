@@ -12,7 +12,7 @@ class AddPost extends Component {
         this.state = this.initialState;
     }
 
-    initialState = {title:"", thumbnail:"", shortDes:"", content:""}
+    initialState = {title:"", thumbnail:"", shortDes:"",urlDetail:"", content:""}
 
     resetPost= () => {
         this.setState(()=> this.initialState);
@@ -25,20 +25,16 @@ class AddPost extends Component {
             title: this.state.title,
             thumbnail: this.state.thumbnail,
             shortDes: this.state.shortDes,
+            urlDetail: this.state.urlDetail,
             content: this.state.content,
         };
 
-        console.log("title: " + post.title + ",thumbnail: " + post.thumbnail + ",shortDes: " + post.shortDes + ",content: " + post.content);
-
-        axios.post("http://localhost:8085/post", {
-            title: this.state.title,
-            thumbnail: this.state.thumbnail,
-            shortDes: this.state.shortDes,
-            content: this.state.content,
-        })
+        axios.post("http://localhost:8085/post", post)
             .then(res => {
-                console.log(res.data);
-                });
+                if(res.data != null) {
+                    alert("Saved post successfully")
+                }
+            });
     }
 
     handleChange = event => {
@@ -71,6 +67,13 @@ class AddPost extends Component {
                     <Form.Control required
                         type={'text'} name={'shortDes'} value={this.state.shortDes} onChange={this.handleChange}/>
                 </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>Url Detail post</Form.Label>
+                    <Form.Control required
+                                  type={'text'} name={'urlDetail'} value={this.state.urlDetail} onChange={this.handleChange}/>
+                </Form.Group>
+
                 <Form.Group>
                     <Form.Label>Content</Form.Label>
 
