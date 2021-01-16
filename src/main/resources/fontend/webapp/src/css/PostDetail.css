@@ -1,0 +1,24 @@
+.container {
+    padding-top: 80px;
+}
+
+.container h1 {
+    font-size: 50px;
+    color: #1E1A1A;
+    font-weight: bold;
+}
+
+.container p {
+    font-size: 18px;
+    color: #424242;
+}
+
+.container span {
+    font-size: 27px;
+    color: #1E1A1A;
+    font-weight: bold;
+}
+
+.container a:hover {
+    text-decoration-line: none;
+}

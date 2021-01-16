@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
+import { Markup } from 'interweave';
+import '../css/PostDetail.css'
 
 class PostDetail extends Component {
 
@@ -16,9 +18,7 @@ class PostDetail extends Component {
 
     findAllPosts() {
 
-        const id =this.getId();
-
-        axios.get('http://localhost:8085/post/' + this.getId())
+        axios.get('http://localhost:8085/post/'+ this.getId())
             .then(res => {
                 const post = res.data;
                 this.setState({post});
@@ -28,14 +28,14 @@ class PostDetail extends Component {
 
     getId() {
         let s = window.location.pathname;
-        return s.substring(s.length, s.length-1);
+        let id = s.substring(s.lastIndexOf("-")+1, s.length);
+        return id;
     }
 
     render() {
         return(
-            <div>
-                <h1>THIS IS POST DETAIL</h1>
-                <p>{this.state.post.title}</p>
+            <div className={'container'}>
+                <Markup content={this.state.post.content}/>
             </div>
         );
     }

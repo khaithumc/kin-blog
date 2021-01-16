@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Card} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import "../../css/GridPost.css"
 import axios from "axios";
 
@@ -39,13 +39,13 @@ class GridPost extends Component {
                 <div className={'ListCard'}>
                     {this.state.posts.map((post) => (
                         <Card key={post.id} className={'CardPost'}>
-                            <a href={post.urlDetail+"_"+post.id}><Card.Img variant="top" src={post.thumbnail} className={'CardImg'}/></a>
+                            <a href={post.urlDetail+"-"+post.id}><Card.Img variant="top" src={post.thumbnail} className={'CardImg'}/></a>
                             <Card.Body className={'CardBody'}>
                                 <Card.Title className={'CardTitle'}><b>{post.title}</b></Card.Title>
                                 <Card.Text className={'CardText'}>
                                     {post.shortDes}
                                 </Card.Text>
-                                <a className={'CardButton'} href={post.urlDetail+"_"+post.id}>READ MORE</a>
+                                <a className={'CardButton'} href={post.urlDetail+"-"+post.id}>READ MORE</a>
                             </Card.Body>
                         </Card>
                     ))}

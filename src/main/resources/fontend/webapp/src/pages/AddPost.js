@@ -26,12 +26,15 @@ class AddPost extends Component {
             thumbnail: this.state.thumbnail,
             shortDes: this.state.shortDes,
             urlDetail: this.state.urlDetail,
-            content: this.state.content,
+            content: this.initialState.content,
         };
+
+        console.log(this.initialState.content);
 
         axios.post("http://localhost:8085/post", post)
             .then(res => {
                 if(res.data != null) {
+                    console.log(res.data)
                     alert("Saved post successfully")
                 }
             });
@@ -44,6 +47,7 @@ class AddPost extends Component {
     }
 
     handleEditorChange = (content, editor) => {
+        this.initialState.content = content;
         console.log('Content was updated:', content);
     }
 
@@ -87,10 +91,11 @@ class AddPost extends Component {
                                 'searchreplace visualblocks code fullscreen',
                                 'insertdatetime media table paste code help wordcount'
                             ],
-                            toolbar:
+                            toolbar:[
                                 'undo redo | formatselect | bold italic backcolor | \
                                 alignleft aligncenter alignright alignjustify | \
-                                bullist numlist outdent indent | removeformat | help'
+                                bullist numlist outdent indent | removeformat | help'],
+                            selector: "textarea",
                         }}
                         required
                         name={'content'}
