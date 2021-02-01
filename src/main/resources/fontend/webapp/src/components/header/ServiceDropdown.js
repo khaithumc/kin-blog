@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ServiceItems } from '../../data/ServiceItems';
 import '../../css/Dropdown.css';
-import { Link } from 'react-router-dom';
 
 function ServiceDropdown() {
     const [click, setClick] = useState(false);

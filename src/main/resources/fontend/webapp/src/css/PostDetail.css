@@ -1,5 +1,16 @@
+.DetailPost {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    background: rgb(242, 245, 250);;
+}
+
 .container {
-    padding-top: 80px;
+    margin-top: 50px;
+    padding: 30px 50px 30px 100px;
+}
+
+#content {
+    border-right: 1px solid thistle;
 }
 
 .container h1 {
@@ -21,4 +32,16 @@
 
 .container a:hover {
     text-decoration-line: none;
+}
+
+.SideBar {
+}
+
+@media screen and (max-width: 960px){
+
+}
+
+@media screen and (max-width: 700px) {
+
+
 }

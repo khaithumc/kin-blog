@@ -3,7 +3,7 @@ import {Button, Modal, Table} from "react-bootstrap";
 import axios from "axios";
 import '../css/Admin.css'
 
-class Admin extends Component{
+class AdminPost extends Component{
 
     constructor(props) {
         super(props);
@@ -92,4 +92,4 @@ class Admin extends Component{
         );
     }
 }
-export default Admin;
+export default AdminPost;

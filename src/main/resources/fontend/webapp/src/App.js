@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
 import Footer from "./components/footer/Footer";
-import Admin from "./pages/Admin";
+import AdminPost from "./pages/AdminPost";
 import AddPost from "./pages/AddPost";
 import PostDetail from "./pages/PostDetail";
 import axios from "axios";
@@ -42,7 +42,7 @@ class App extends Component{
                         <Route path={'/'} exact component={Home}/>
                         <Route path={'/login'} component={Login}/>
                         <Route path={'/products'} component={Products}/>
-                        <Route path={'/admin'} component={Admin}/>
+                        <Route path={'/admin-post'} component={AdminPost}/>
                         <Route path={'/add-post'} component={AddPost}/>
                         <Route path={this.state.posts.urlDetail} component={PostDetail}/>
                     </Switch>

@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import '../../css/NavigationBar.css';
 import ServiceDropdown from './ServiceDropdown';
 import {Button, Form, FormControl} from "react-bootstrap";
+import AdminDropdown from "./AdminDropdown";
 
 
 function NavigationBar() {
 
     const [click, setClick] = useState(false);
     const [serviceDropdown, setServiceDropdown] = useState(false);
+    const [adminDropdown, setAdminDropdown] = useState(false);
     const [searchDropdown, setSearchDropdown] = useState(false);
 
     const handleClick = () => setClick(!click);
@@ -26,6 +28,22 @@ function NavigationBar() {
             setServiceDropdown(false);
         } else {
             setServiceDropdown(false);
+        }
+    };
+
+    const onMouseEnterAdmin = () => {
+        if (window.innerWidth < 960) {
+            setAdminDropdown(false);
+        } else {
+            setAdminDropdown(true);
+        }
+    };
+
+    const onMouseLeaveAdmin = () => {
+        if (window.innerWidth < 960) {
+            setAdminDropdown(false);
+        } else {
+            setAdminDropdown(false);
         }
     };
 
@@ -64,10 +82,11 @@ function NavigationBar() {
                     </a>
                 </li>
 
-                <li className='nav-item-handing'>
+                <li className='nav-item-handing' onMouseEnter={onMouseEnterAdmin} onMouseLeave={onMouseLeaveAdmin}>
                     <a href={'/admin'} className={'nav-links-handing'} onClick={closeMobileMenu}>
-                        Admin
+                        Admin <i className={'fas fa-caret-down'} />
                     </a>
+                    {adminDropdown && <AdminDropdown/>}
                 </li>
 
                 <li className={'nav-item-handing'} onMouseEnter={onMouseEnterSearch} onMouseLeave={onMouseLeaveSearch}>

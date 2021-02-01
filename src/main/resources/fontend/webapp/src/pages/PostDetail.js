@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import { Markup } from 'interweave';
 import '../css/PostDetail.css'
+import Comment from "../components/body/Comment";
 
 class PostDetail extends Component {
 
@@ -34,9 +35,19 @@ class PostDetail extends Component {
 
     render() {
         return(
-            <div className={'container'}>
-                <Markup content={this.state.post.content}/>
-            </div>
+            <>
+                <div className={'DetailPost'}>
+                    <div className={'container'} id={'content'}>
+                        <Markup content={this.state.post.content}/>
+                    </div>
+                    <div className={'SideBar'}>
+
+                    </div>
+                    <div className={'container'}>
+                        <Comment/>
+                    </div>
+                </div>
+            </>
         );
     }
 }
