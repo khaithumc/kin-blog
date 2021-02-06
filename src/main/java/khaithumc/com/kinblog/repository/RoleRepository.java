@@ -1,9 +1,10 @@
 package khaithumc.com.kinblog.repository;
 
-import khaithumc.com.kinblog.model.Post;
+import khaithumc.com.kinblog.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
+
 }

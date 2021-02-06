@@ -28,17 +28,17 @@ public class PostController {
     @PostMapping
     public ResponseEntity<Post> addPost(@RequestBody Post post) {
         post.setCreatedAt(LocalDate.now());
-        return new ResponseEntity<>(postService.addPost(post), new HttpHeaders(), HttpStatus.CREATED);
+        return new ResponseEntity<>(postService.add(post), new HttpHeaders(), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Post> getPostById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(postService.getPostById(id).get(), new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(postService.getById(id).get(), new HttpHeaders(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public void deletePostById(@PathVariable("id") Long id) {
-        postService.deletePostById(id);
+        postService.deleteById(id);
     }
 
 }
