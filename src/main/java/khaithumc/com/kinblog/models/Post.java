@@ -1,9 +1,7 @@
-package khaithumc.com.kinblog.model;
+package khaithumc.com.kinblog.models;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;

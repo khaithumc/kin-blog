@@ -1,6 +1,6 @@
 package khaithumc.com.kinblog.controller;
 
-import khaithumc.com.kinblog.model.Post;
+import khaithumc.com.kinblog.models.Post;
 import khaithumc.com.kinblog.services.impl.PostServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

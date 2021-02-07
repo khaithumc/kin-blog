@@ -4,7 +4,7 @@ package khaithumc.com.kinblog.services;
 import java.util.List;
 import java.util.Optional;
 
-public interface IService<T> {
+public interface PostService<T> {
     List<T> getAll();
 
     T add(T t);

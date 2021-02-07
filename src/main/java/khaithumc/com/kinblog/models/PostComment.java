@@ -1,4 +1,4 @@
-package khaithumc.com.kinblog.model;
+package khaithumc.com.kinblog.models;
 
 import lombok.Getter;
 import lombok.Setter;

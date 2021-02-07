@@ -1,17 +1,16 @@
 package khaithumc.com.kinblog.services.impl;
 
-import khaithumc.com.kinblog.model.Post;
+import khaithumc.com.kinblog.models.Post;
 import khaithumc.com.kinblog.repository.PostRepository;
-import khaithumc.com.kinblog.services.IService;
+import khaithumc.com.kinblog.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PostServiceImpl implements IService<Post> {
+public class PostServiceImpl implements PostService<Post> {
 
     @Autowired
     private PostRepository postRepos;

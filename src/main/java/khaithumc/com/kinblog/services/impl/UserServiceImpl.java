@@ -1,37 +1,29 @@
 package khaithumc.com.kinblog.services.impl;
 
-import khaithumc.com.kinblog.model.User;
+import khaithumc.com.kinblog.models.User;
 import khaithumc.com.kinblog.repository.UserRepository;
-import khaithumc.com.kinblog.services.IService;
+import khaithumc.com.kinblog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
-@Service
-public class UserServiceImpl implements IService<User> {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public Optional<User> findByUsername(String username) {
+        return Optional.empty();
     }
 
     @Override
-    public User add(User user) {
-        return userRepository.save(user);
+    public Boolean existsByUsername(String username) {
+        return null;
     }
 
     @Override
-    public Optional<User> getById(Long id) {
-        return userRepository.findById(id);
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        userRepository.deleteById(id);
+    public Boolean existsByEmail(String email) {
+        return null;
     }
 }
