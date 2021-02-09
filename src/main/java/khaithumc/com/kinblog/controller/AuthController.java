@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -84,26 +85,25 @@ public class AuthController {
                 encoder.encode(signupRequest.getPassword()));
 
 
-        Set<String> strRoles = signupRequest.getRoles();
-        Set<Role> roles = new HashSet<>();
+        List<String> strRoles = signupRequest.getRole();
+        List<Role> roles = new ArrayList<>();
 
         if (strRoles == null) {
             Role userRole = roleRepository.findByNameRole(EnumRole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
-            strRoles.forEach(role -> {
-                        if (role.equals("admin")) {
-                            Role adminRole = roleRepository.findByNameRole(EnumRole.ROLE_ADMIN)
-                                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                            roles.add(adminRole);
-                        } else {
-                            Role userRole = roleRepository.findByNameRole(EnumRole.ROLE_USER)
-                                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                            roles.add(userRole);
-                        }
-
-                    });
+            for(String role : strRoles) {
+                if(role.equals("admin")) {
+                    Role adminRole = roleRepository.findByNameRole(EnumRole.ROLE_ADMIN)
+                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                    roles.add(adminRole);
+                } else {
+                    Role userRole = roleRepository.findByNameRole(EnumRole.ROLE_USER)
+                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                    roles.add(userRole);
+                }
+            }
         }
         user.setRoles(roles);
         userRepository.save(user);

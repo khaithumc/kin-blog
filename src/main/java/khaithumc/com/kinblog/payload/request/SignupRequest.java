@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -26,5 +27,5 @@ public class SignupRequest {
     @Size(min = 6, max = 120)
     private String password;
 
-    private Set<String> roles;
+    private List<String> role;
 }

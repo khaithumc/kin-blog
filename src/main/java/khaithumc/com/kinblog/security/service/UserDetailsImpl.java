@@ -1,12 +1,14 @@
 package khaithumc.com.kinblog.security.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import khaithumc.com.kinblog.models.Role;
 import khaithumc.com.kinblog.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +16,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class UserDetailsImpl implements UserDetails {
+
+    private static final long serialVersionUID = 1L;
 
     private Long id;
 
@@ -38,9 +42,24 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     public UserDetailsImpl build(User user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream()
+        /*List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getNameRole().name()))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        List<Role> roles = user.getRoles();
+
+        for (Role role :roles) {
+            role.getNameRole();
+            role.getIdRole();
+        }
+
+        for(Role role : roles) {
+            if(role.getNameRole().name().equals("ROLE_USER")) {
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            } else {
+                authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            }
+        }
 
         return new UserDetailsImpl(
                 user.getIdUser(),
