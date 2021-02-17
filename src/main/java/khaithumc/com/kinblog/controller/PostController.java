@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -21,11 +22,13 @@ public class PostController {
 
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<List<Post>> getAllPost() {
         return new ResponseEntity<>(postService.getAll(), new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<Post> addPost(@RequestBody Post post) {
         post.setCreatedAt(LocalDate.now());
         return new ResponseEntity<>(postService.add(post), new HttpHeaders(), HttpStatus.CREATED);
@@ -37,6 +40,7 @@ public class PostController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public void deletePostById(@PathVariable("id") Long id) {
         postService.deleteById(id);
     }

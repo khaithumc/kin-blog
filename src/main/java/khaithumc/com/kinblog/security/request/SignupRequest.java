@@ -1,6 +1,5 @@
-package khaithumc.com.kinblog.payload.request;
+package khaithumc.com.kinblog.security.request;
 
-import khaithumc.com.kinblog.models.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +7,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter

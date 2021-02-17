@@ -1,4 +1,4 @@
-package khaithumc.com.kinblog.payload.reponse;
+package khaithumc.com.kinblog.security.reponse;
 
 import lombok.Getter;
 import lombok.Setter;

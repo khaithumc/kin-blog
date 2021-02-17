@@ -1,4 +1,4 @@
-package khaithumc.com.kinblog.payload.reponse;
+package khaithumc.com.kinblog.security.reponse;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import java.util.List;
 public class JwtResponse {
 
     private String token;
-    private String type = "Bearer";
+    private String type = "Bearer ";
     private Long id;
     private String username;
     private String email;

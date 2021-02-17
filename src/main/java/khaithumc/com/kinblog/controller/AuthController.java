@@ -3,10 +3,10 @@ package khaithumc.com.kinblog.controller;
 import khaithumc.com.kinblog.enums.EnumRole;
 import khaithumc.com.kinblog.models.Role;
 import khaithumc.com.kinblog.models.User;
-import khaithumc.com.kinblog.payload.reponse.JwtResponse;
-import khaithumc.com.kinblog.payload.reponse.MessageResponse;
-import khaithumc.com.kinblog.payload.request.LoginRequest;
-import khaithumc.com.kinblog.payload.request.SignupRequest;
+import khaithumc.com.kinblog.security.reponse.JwtResponse;
+import khaithumc.com.kinblog.security.reponse.MessageResponse;
+import khaithumc.com.kinblog.security.request.LoginRequest;
+import khaithumc.com.kinblog.security.request.SignupRequest;
 import khaithumc.com.kinblog.repository.RoleRepository;
 import khaithumc.com.kinblog.repository.UserRepository;
 import khaithumc.com.kinblog.security.jwt.JwtUtil;
@@ -18,20 +18,17 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("authenticate")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthController {
 
     @Autowired
