@@ -27,6 +27,11 @@ public class PostController {
         return new ResponseEntity<>(postService.getAll(), new HttpHeaders(), HttpStatus.OK);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Post>> getAllPostInHomepage() {
+        return new ResponseEntity<>(postService.getAll(), new HttpHeaders(), HttpStatus.OK);
+    }
+
     @PostMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<Post> addPost(@RequestBody Post post) {

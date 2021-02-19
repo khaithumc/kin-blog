@@ -19,7 +19,7 @@ class GridPost extends Component {
     }
 
     findAllPosts() {
-        axios.get("http://localhost:8085/post", {
+        axios.get("http://localhost:8085/post/all", {
             headers : authHeader()
         })
             .then(res => {

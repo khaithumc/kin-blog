@@ -12,6 +12,7 @@ import PostDetail from "./pages/PostDetail";
 import axios from "axios";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
+import AuthService from "./services/AuthService";
 
 
 class App extends Component{
@@ -19,12 +20,15 @@ class App extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            posts : []
+            posts : [],
+            currentUser: undefined
         };
     }
 
     componentDidMount() {
-        this.findAllPosts()
+        this.findAllPosts();
+        const user = AuthService.getCurrentUser();
+        this.setState({currentUser : user});
     }
 
     findAllPosts() {
@@ -44,8 +48,8 @@ class App extends Component{
                         <Route path={'/'} exact component={Home}/>
                         <Route path={'/login'} component={Login}/>
                         <Route path={'/products'} component={Products}/>
-                        <Route path={'/admin-post'} component={AdminPost}/>
-                        <Route path={'/add-post'} component={AddPost}/>
+                        <Route path={'/admin-post'} component={this.state.currentUser ? AdminPost : Login}/>
+                        <Route path={'/add-post'} component={this.state.currentUser ? AddPost : Login}/>
                         <Route path={'/register'} component={Register}/>
                         <Route path={'/profile'} component={Profile}/>
                         <Route path={this.state.posts.urlDetail} component={PostDetail}/>

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../css/NavigationBar.css';
 import ServiceDropdown from './ServiceDropdown';
 import {Button, Form, FormControl} from "react-bootstrap";
 import AdminDropdown from "./AdminDropdown";
+import AuthService from "../../services/AuthService";
+import UserDropdown from "./UserDropdown";
 
 
 function NavigationBar() {
@@ -11,6 +13,21 @@ function NavigationBar() {
     const [serviceDropdown, setServiceDropdown] = useState(false);
     const [adminDropdown, setAdminDropdown] = useState(false);
     const [searchDropdown, setSearchDropdown] = useState(false);
+    const [adminBoard, setAdminBoard] = useState(false);
+    const [currentUser, setCurrentUser] = useState(undefined);
+    const [userDropdown, setUserDropdown] = useState(false);
+
+    useEffect(() => {
+        const user = AuthService.getCurrentUser();
+
+        if(user != null) {
+            setCurrentUser(user);
+            setAdminBoard(user.roles.includes("ROLE_ADMIN"));
+        }
+
+    }, []);
+
+
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -47,12 +64,33 @@ function NavigationBar() {
         }
     };
 
+    const onMouseEnterUser = () => {
+        if (window.innerWidth < 960) {
+            setUserDropdown(false);
+        } else {
+            setUserDropdown(true);
+        }
+    };
+
+    const onMouseLeaveUser = () => {
+        if (window.innerWidth < 960) {
+            setAdminDropdown(false);
+        } else {
+            setUserDropdown(false);
+        }
+    };
+
     const onMouseEnterSearch = () => {
         setSearchDropdown(true);
     }
 
     const onMouseLeaveSearch = () => {
         setSearchDropdown(false);
+    }
+
+    const logout = () => {
+        AuthService.logout();
+
     }
 
     return (
@@ -76,12 +114,12 @@ function NavigationBar() {
                     {serviceDropdown && <ServiceDropdown />}
                 </li>
 
-                <li className='nav-item-handing' onMouseEnter={onMouseEnterAdmin} onMouseLeave={onMouseLeaveAdmin}>
+                {adminBoard && (  <li className='nav-item-handing' onMouseEnter={onMouseEnterAdmin} onMouseLeave={onMouseLeaveAdmin}>
                     <a href={'/admin'} className={'nav-links-handing'} onClick={closeMobileMenu}>
                         Admin <i className={'fas fa-caret-down'} />
                     </a>
                     {adminDropdown && <AdminDropdown/>}
-                </li>
+                </li>)}
 
                 <li className={'nav-item-handing'} onMouseEnter={onMouseEnterSearch} onMouseLeave={onMouseLeaveSearch}>
                     <a href='/search' className='nav-links-handing' onClick={closeMobileMenu}>
@@ -95,11 +133,21 @@ function NavigationBar() {
                     }
                 </li>
 
-                <li className={'nav-item-handing'}>
+
+                {currentUser ? (
+                    <li className={'nav-item-handing'} onMouseEnter={onMouseEnterUser} onMouseLeave={onMouseLeaveUser}>
+                        <Button onClick={logout}>
+                            <i className="fas fa-user-alt"></i>
+                            {currentUser.username}
+                        </Button>
+                        {userDropdown && <UserDropdown/>}
+                    </li>) :
+                    (<li className={'nav-item-handing'}>
                     <Button href={'/login'}>
                         Sign In
                     </Button>
-                </li>
+                </li>)}
+
             </ul>
         </nav>
     );

@@ -43,7 +43,7 @@ function Login() {
                 if(res.data != null) {
                     localStorage.setItem('user', JSON.stringify(res.data));
                     alert("successfully !")
-                    history.push("/profile");
+                    history.push("/");
                     window.location.reload();
                 } else {
                     alert("Username or Password is not valid")
